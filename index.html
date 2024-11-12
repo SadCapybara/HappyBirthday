@@ -69,14 +69,14 @@
 
         /* Стили для текста с анимацией */
         .greeting-text {
-            font-size: 3rem;
+            font-size: 3vw;
             color: #ff1493; /* розовый */
             font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
             animation: floatUpDown 4s ease-in-out infinite;
             position: absolute;
             top: 10%; /* Размещаем текст в верхней части экрана */
-            left: 25%; /* Центрируем по горизонтали */
+            left:20%; /* Центрируем по горизонтали */
             transform: translateX(-50%); /* Центрирование по горизонтали */
         }
 
@@ -112,7 +112,7 @@
 
         /* Анимация для появления текста поздравлений */
         .appearing-text {
-            font-size: 1.5rem;
+            font-size: 1vw;
             color: #fff; /* белый цвет текста */
             opacity: 0;
             animation: fadeInMove 3s forwards;
@@ -137,7 +137,7 @@
 
         /* Задержки для появления текста */
         .delay-1 {
-            animation-delay: 1s; /* первое сообщение появляется с задержкой 1 секунда */
+            animation-delay: 0s; /* первое сообщение появляется с задержкой 1 секунда */
         }
 
         .delay-2 {
