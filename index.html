@@ -69,14 +69,14 @@
 
         /* Стили для текста с анимацией */
         .greeting-text {
-            font-size: 3vw;
+            font-size: 6vw;
             color: #ff1493; /* розовый */
             font-weight: bold;
             text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
             animation: floatUpDown 4s ease-in-out infinite;
             position: absolute;
             top: 10%; /* Размещаем текст в верхней части экрана */
-            left:20%; /* Центрируем по горизонтали */
+            left:0%; /* Центрируем по горизонтали */
             transform: translateX(-50%); /* Центрирование по горизонтали */
         }
 
@@ -96,7 +96,7 @@
         /* Падение эмодзи (большие эмодзи) */
         .emoji {
             position: absolute;
-            font-size: 4rem; /* большие эмодзи */
+            font-size: 4vw; /* большие эмодзи */
             animation: fall 6s linear infinite;
         }
 
@@ -112,7 +112,7 @@
 
         /* Анимация для появления текста поздравлений */
         .appearing-text {
-            font-size: 1vw;
+            font-size: 5vw;
             color: #fff; /* белый цвет текста */
             opacity: 0;
             animation: fadeInMove 3s forwards;
@@ -194,15 +194,15 @@
         
         <!-- Основной текст "С днём рождения мама" по центру сверху -->
         <div class="greeting-text">
-            🎉🎂🎁  С днём рождения мама! 🎉🎂🎁
+            🎉  С днём рождения мама! 🎉
         </div>
 
         <!-- Эмодзи падающие как дождь (большие) -->
-        <div class="emoji" style="left: 10%; animation-duration: 6s;">🎉</div>
+        <div class="emoji" style="left: 20%; animation-duration: 6s;">🎉</div>
         <div class="emoji" style="left: 30%; animation-duration: 7s;">🎂</div>
         <div class="emoji" style="left: 50%; animation-duration: 5s;">🎁</div>
-        <div class="emoji" style="left: 70%; animation-duration: 8s;">🎈</div>
-        <div class="emoji" style="left: 90%; animation-duration: 6s;">🎊</div>
+        <div class="emoji" style="left: 60%; animation-duration: 8s;">🎈</div>
+        <div class="emoji" style="left: 70%; animation-duration: 6s;">🎊</div>
 
         <!-- Тексты поздравлений -->
         <div class="appearing-text delay-1" id="text1">
@@ -226,7 +226,7 @@
         <img id="hlopushka" src="hlopushka.gif" alt="Hlopushka">
 
         <!-- Музыка, которая будет играть постоянно -->
-        <audio id="backgroundMusic" autoplay loop>
+        <audio id="backgroundMusic"  loop>
             <source src="music.mp3" type="audio/mp3">
             Ваш браузер не поддерживает аудио.
         </audio>
