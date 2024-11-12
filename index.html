@@ -3,17 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поздравление для мамы</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Поздравление</title>
+    <style>
+        /* Подключение шрифта */
+        @font-face {
+            font-family: 'Shrift';
+            src: url('shrift.ttf') format('truetype');
+        }
+
+        /* Черный фон перед началом */
+        #startScreen {
+            background-color: #000; /* черный фон */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10; /* чтобы фон был сверху */
+        }
+
+        /* Кнопка с эмодзи подарка */
+        .start-button {
+            font-size: 3rem;
+            background-color: #ff1493;
+            color: #fff;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Основной стиль для фона */
+        body {
+            background: url('background.jpg') no-repeat center center fixed; /* фоновое изображение */
+            background-size: cover;
+            font-family: 'Shrift', sans-serif; /* Применяем ваш шрифт */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            color: #fff; /* белый текст для фона */
+            animation: moveBackground 30s infinite linear; /* Замедлил движение фона до 30 секунд */
+        }
+
+        /* Анимация для движения фона по диагонали */
+        @keyframes moveBackground {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* Стили для текста с анимацией */
+        .greeting-text {
+            font-size: 3rem;
+            color: #ff1493; /* розовый */
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: floatUpDown 4s ease-in-out infinite;
+            position: absolute;
+            top: 10%; /* Размещаем текст в верхней части экрана */
+            left: 25%; /* Центрируем по горизонтали */
+            transform: translateX(-50%); /* Центрирование по горизонтали */
+        }
+
+        /* Плавное движение текста вверх и вниз */
+        @keyframes floatUpDown {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Падение эмодзи (большие эмодзи) */
+        .emoji {
+            position: absolute;
+            font-size: 4rem; /* большие эмодзи */
+            animation: fall 6s linear infinite;
+        }
+
+        /* Анимация для падения эмодзи */
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Анимация для появления текста поздравлений */
+        .appearing-text {
+            font-size: 1.5rem;
+            color: #fff; /* белый цвет текста */
+            opacity: 0;
+            animation: fadeInMove 3s forwards;
+            margin-top: 20px;
+            position: absolute;
+            top: 50%; /* Центрируем по вертикали */
+            left: 50%; /* Центрируем по горизонтали */
+            transform: translate(-50%, -50%); /* Центрирование по обеим осям */
+        }
+
+        /* Плавное появление и движение текста вниз */
+        @keyframes fadeInMove {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8) translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) translateY(0);
+            }
+        }
+
+        /* Задержки для появления текста */
+        .delay-1 {
+            animation-delay: 1s; /* первое сообщение появляется с задержкой 1 секунда */
+        }
+
+        .delay-2 {
+            animation-delay: 1s;
+        }
+
+        .delay-3 {
+            animation-delay: 1s;
+        }
+
+        /* Стили для кнопки */
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #ff1493;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+
+        /* Стили для анимации "хлопушки" */
+        #hlopushka {
+            display: none;
+            position: fixed; /* фиксированное позиционирование */
+            top: 0;
+            left: 0;
+            width: 100vw; /* на весь экран по ширине */
+            height: 100vh; /* на весь экран по высоте */
+            object-fit: cover; /* чтобы изображение заполнило экран */
+        }
+
+    </style>
 </head>
 <body>
-    <div class="container">
-        <img src="background.jpg" alt="Background" class="background">
-        <div class="message">
-            <h1>С днём рождения, мама! 💖</h1>
-            <p>Ты — свет в нашем доме, вдохновение и опора. Спасибо за твою бесконечную любовь, терпение и заботу. Пусть каждый день будет наполнен радостью, а твоя жизнь — счастьем и гармонией. Мы тебя очень любим!</p>
-        </div>
+
+    <!-- Черный экран с кнопкой "Подарок" -->
+    <div id="startScreen">
+        <button class="start-button" onclick="start()">🎁</button>
     </div>
-    <script src="app.js"></script>
+
+    <!-- Основной контент (будет скрыт до начала) -->
+    <div id="content" style="display: none;">
+        
+        <!-- Основной текст "С днём рождения мама" по центру сверху -->
+        <div class="greeting-text">
+            🎉🎂🎁  С днём рождения мама! 🎉🎂🎁
+        </div>
+
+        <!-- Эмодзи падающие как дождь (большие) -->
+        <div class="emoji" style="left: 10%; animation-duration: 6s;">🎉</div>
+        <div class="emoji" style="left: 30%; animation-duration: 7s;">🎂</div>
+        <div class="emoji" style="left: 50%; animation-duration: 5s;">🎁</div>
+        <div class="emoji" style="left: 70%; animation-duration: 8s;">🎈</div>
+        <div class="emoji" style="left: 90%; animation-duration: 6s;">🎊</div>
+
+        <!-- Тексты поздравлений -->
+        <div class="appearing-text delay-1" id="text1">
+            Мам, я хочу, чтобы в этот день ты почувствовала, как сильно тебя ценю и люблю. 
+            Ты — невероятный человек, и мне так повезло, что ты моя мама. Спасибо тебе за всю твою любовь и заботу, за то, что всегда рядом!
+        </div>
+
+        <div class="appearing-text delay-2" id="text2" style="display: none;">
+            Я желаю тебе только самого лучшего в жизни, больше дней когда можно отдыхать столько, сколько хочешь и кучу денег! Ты заслуживаешь только счастья, и я надеюсь, что этот день принесёт тебе только радость. 
+        </div>
+
+        <div class="appearing-text delay-3" id="text3" style="display: none;">
+            С праздником тебя! Люблю тебя! 💖
+            Твой сын Эдик 
+        </div>
+
+        <!-- Кнопка для перехода к следующему поздравлению -->
+        <button class="btn" onclick="showNextText()">💖Дальше💖</button>
+
+        <!-- Анимация хлопушки -->
+        <img id="hlopushka" src="hlopushka.gif" alt="Hlopushka">
+
+        <!-- Музыка, которая будет играть постоянно -->
+        <audio id="backgroundMusic" autoplay loop>
+            <source src="music.mp3" type="audio/mp3">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+
+        <!-- Звук хлопушки -->
+        <audio id="hlopushaSound">
+            <source src="hlopusha.mp3" type="audio/mp3">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+
+    </div>
+
+    <script>
+        let currentText = 1;
+
+        function start() {
+            // Скрываем экран и показываем контент
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('backgroundMusic').play();
+        }
+
+        function showNextText() {
+            document.getElementById(`text${currentText}`).style.display = 'none';
+            currentText++;
+
+            if (currentText <= 3) {
+                document.getElementById(`text${currentText}`).style.display = 'block';
+            } else {
+                // Скрыть кнопку, если все поздравления показаны
+                document.querySelector('.btn').style.display = 'none';
+                document.getElementById('hlopushaSound').play();
+                document.getElementById('hlopushka').style.display = 'block';
+            }
+        }
+    </script>
+
 </body>
 </html>
